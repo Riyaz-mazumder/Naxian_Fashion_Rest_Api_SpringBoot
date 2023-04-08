@@ -1,6 +1,7 @@
 package com.naxian.Naxian_Fashion_Rest_Api.models.orders;
 
 import com.naxian.Naxian_Fashion_Rest_Api.models.baseModels.BaseModelDTO;
+import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ public class CustomersProductOrderDTO extends BaseModelDTO {
     private String address;
     private int amount;
     private List<TheOrders> theOrders;
+    private Customers customers;
     private String paymentMethod;
     private String bikashNo;
     private String TrxID;

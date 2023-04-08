@@ -15,12 +15,12 @@ import java.util.List;
 public interface CustomersRepo extends JpaRepository<Customers, Long> {
 
     @Query(nativeQuery = true, value = "INSERT INTO Customers (card) VALUES(:cardValue)")
-    public void setToCart(@Param("cardValue") List<Card> cardValue);
+    public void setToCart(@Param("cardValue") Card cardValue);
 
     @Query(nativeQuery = true, value = "INSERT INTO Customers (wishList) VALUES(:wishListValue)")
-    public void setToWishList(@Param("wishListValue") List<WishList> wishListValue);
+    public void setToWishList(@Param("wishListValue") WishList wishListValue);
 
     @Query(nativeQuery = true, value = "INSERT INTO Customers (customersProductOrders) VALUES(:customersProductOrdersValue)")
-    public void setCustomersProductsOrder(@Param("customersProductOrdersValue") List<CustomersProductOrders> customersProductOrdersValue);
+    public void setCustomersProductsOrder(@Param("customersProductOrdersValue") CustomersProductOrders customersProductOrdersValue);
 
 }

@@ -28,7 +28,8 @@ public class CustomersProductOrders extends BaseModel {
     @OneToMany(mappedBy = "customersProductOrders")
     private List<TheOrders> theOrders;
 
-    private Long customerId;
+    @ManyToOne
+    private Customers customers;
 
     private String paymentMethod;
     private String bikashNo;

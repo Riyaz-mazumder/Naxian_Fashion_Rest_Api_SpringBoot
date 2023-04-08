@@ -70,4 +70,8 @@ public class OrdersController {
 
         ordersService.setOrder(customersProductOrders);
     }
+    @DeleteMapping("orders/delete/{id}")
+    public void deleteTheOrder(@PathVariable Long id){
+       ordersService.deleteOrder(id);
+    }
 }

@@ -2,6 +2,8 @@ package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 
 import com.naxian.Naxian_Fashion_Rest_Api.models.admins.Admins;
 import com.naxian.Naxian_Fashion_Rest_Api.models.admins.AdminsDTO;
+import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
+import com.naxian.Naxian_Fashion_Rest_Api.models.customers.CustomersDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.AdminsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,11 @@ public class AdminsController {
         List<Admins> allAdmins = adminsService.getAllAdmin();
         List<AdminsDTO> adminsDTO = new ArrayList<>();
 
-        BeanUtils.copyProperties(allAdmins, adminsDTO);
+        for (Admins admins:allAdmins){
+           AdminsDTO adminsDTO1 = new AdminsDTO();
+            BeanUtils.copyProperties(admins, adminsDTO1);
+            adminsDTO.add(adminsDTO1);
+        }
         return adminsDTO;
     }
 

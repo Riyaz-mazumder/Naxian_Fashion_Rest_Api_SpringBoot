@@ -22,8 +22,12 @@ public class Customers extends BaseModel {
 
     @OneToMany(mappedBy = "customers")
     private List<Card> card;
+
     @OneToMany(mappedBy = "customers")
     private List<WishList> wishList;
+
+    @OneToMany(mappedBy = "customers")
+    private List<CustomersProductOrders> customersProductOrders;
 
     @OneToMany(mappedBy = "customers")
     private List<ProductsReviews> productsReviews;

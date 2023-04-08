@@ -26,4 +26,8 @@ public class OrdersService {
     public void setOrder(CustomersProductOrders customersProductOrders){
         ordersRepo.save(customersProductOrders);
     }
+
+    public void  deleteOrder(Long id){
+        ordersRepo.deleteById(id);
+    }
 }

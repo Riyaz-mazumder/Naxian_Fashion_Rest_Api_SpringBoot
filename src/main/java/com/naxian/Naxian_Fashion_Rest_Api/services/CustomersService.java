@@ -1,6 +1,7 @@
 package com.naxian.Naxian_Fashion_Rest_Api.services;
 
 import com.naxian.Naxian_Fashion_Rest_Api.dataRepoes.Customers.CustomersRepo;
+import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Card;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,9 @@ public class CustomersService {
     public void deleteCustomer(Long id){
         customersRepo.deleteById(id);
     }
+
+    public void setToCart_(Card card){
+        customersRepo.setToCart(card);
+    }
+
 }

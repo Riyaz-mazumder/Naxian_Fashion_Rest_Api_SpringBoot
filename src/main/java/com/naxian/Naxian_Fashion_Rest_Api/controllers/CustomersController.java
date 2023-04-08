@@ -1,7 +1,10 @@
 package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 
+import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Card;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.CustomersDTO;
+import com.naxian.Naxian_Fashion_Rest_Api.models.products.Products;
+import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.CustomersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +26,12 @@ public class CustomersController {
         List<Customers>  customers =  customersService.getAllCustomers();
         List<CustomersDTO> customersDTO = new ArrayList<>();
 
+        for (Customers customers1:customers){
+            CustomersDTO customersDTO1 = new CustomersDTO();
+            BeanUtils.copyProperties(customers1, customersDTO1);
+            customersDTO.add(customersDTO1);
+        }
 
-        BeanUtils.copyProperties(customers, customersDTO);
         return customersDTO;
     }
 
@@ -53,6 +60,15 @@ public class CustomersController {
         BeanUtils.copyProperties(customersDTO, customers);
 
         customersService.addCustomer(customers);
+    }
+    @PatchMapping("customers/{id}")
+    public void PatchCustomer(@RequestBody CustomersDTO customersDTO, @PathVariable Long id){
+
+        Customers customers = customersService.getCustomer(id);
+        BeanUtils.copyProperties(customersDTO, customers);
+
+
+        customersService.setToCart_(customersDTO.getCard().get(0));
     }
 
     @DeleteMapping("customers/{id}")
