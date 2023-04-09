@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface CustomersRepo extends JpaRepository<Customers, Long> {
 
-    @Query(nativeQuery = true, value = "INSERT INTO Customers (card) VALUES(:cardValue)")
+    @Query( value = "INSERT INTO Customers (card) VALUES(:cardValue)",nativeQuery = true)
     public void setToCart(@Param("cardValue") Card cardValue);
 
     @Query(nativeQuery = true, value = "INSERT INTO Customers (wishList) VALUES(:wishListValue)")

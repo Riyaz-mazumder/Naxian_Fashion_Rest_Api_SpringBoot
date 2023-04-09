@@ -2,10 +2,7 @@ package com.naxian.Naxian_Fashion_Rest_Api.models.orders;
 
 import com.naxian.Naxian_Fashion_Rest_Api.models.baseModels.BaseModel;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -25,7 +22,7 @@ public class CustomersProductOrders extends BaseModel {
     private String address;
     private int amount;
 
-    @OneToMany(mappedBy = "customersProductOrders")
+    @OneToMany(mappedBy = "customersProductOrders", cascade = CascadeType.ALL)
     private List<TheOrders> theOrders;
 
     @ManyToOne

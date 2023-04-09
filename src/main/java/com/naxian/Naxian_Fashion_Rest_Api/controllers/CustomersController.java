@@ -1,5 +1,6 @@
 package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 
+import com.naxian.Naxian_Fashion_Rest_Api.dataRepoes.CardRepo;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Card;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.CustomersDTO;
@@ -19,6 +20,11 @@ public class CustomersController {
 
     @Autowired
     private CustomersService customersService;
+
+
+    @Autowired
+    CardRepo cardRepo;
+
 
     @GetMapping("customers")
     public List<CustomersDTO> getAllCustomers_(){
@@ -61,20 +67,34 @@ public class CustomersController {
 
         customersService.addCustomer(customers);
     }
-    @PatchMapping("customers/{id}")
-    public void PatchCustomer(@RequestBody CustomersDTO customersDTO, @PathVariable Long id){
-
-        Customers customers = customersService.getCustomer(id);
-        BeanUtils.copyProperties(customersDTO, customers);
-
-
-        customersService.setToCart_(customersDTO.getCard().get(0));
-    }
+//    @PatchMapping("customers/{id}")
+//    public void PatchCustomer(@RequestBody CustomersDTO customersDTO, @PathVariable Long id){
+//
+//        Customers customers = customersService.getCustomer(id);
+//        BeanUtils.copyProperties(customersDTO, customers);
+//
+//
+//        customersService.setToCart_(customersDTO.getCard().get(0));
+//    }
 
     @DeleteMapping("customers/{id}")
     public void deleteCustomer(@PathVariable Long id){
         customersService.deleteCustomer(id);
     }
 
+
+
+    @PutMapping("customers/{id}")
+    public void addCard_(@RequestBody CustomersDTO customersDTO, @PathVariable(value = "id") Long id){
+
+        Customers customers = customersService.getCustomer(id);
+//        BeanUtils.copyProperties(customersDTO, customers);
+        for (Card c:customersDTO.getCard()
+             ) {
+            c.setCustomers(customers);
+            cardRepo.save(c);
+        }
+
+    }
 
 }

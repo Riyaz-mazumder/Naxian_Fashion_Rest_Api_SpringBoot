@@ -27,6 +27,13 @@ public class OrdersController {
 
        for(CustomersProductOrders p:customersProductOrders){
            CustomersProductOrderDTO customersProductOrderDTO = new CustomersProductOrderDTO();
+//           p.setTheOrders(null);
+//           p.setCustomers(null);
+           p.getCustomers().setCard(null);
+           p.getCustomers().setWishList(null);
+           p.getCustomers().setCustomersProductOrders(null);
+           p.getCustomers().setProductsReviews(null);
+
            BeanUtils.copyProperties(p, customersProductOrderDTO);
 
            allCustomersProductOrdersDTO.add(customersProductOrderDTO);
