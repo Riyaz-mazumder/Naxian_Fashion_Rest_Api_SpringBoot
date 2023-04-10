@@ -20,26 +20,27 @@ public class OrdersController {
     private OrdersService ordersService;
 
     @GetMapping("orders/unApproved")
-    public List<CustomersProductOrderDTO> getAllUnApprovedOrders_(){
+    public List<CustomersProductOrders> getAllUnApprovedOrders_(){
 
-        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllUnApprovedOrders();
-        List<CustomersProductOrderDTO> allCustomersProductOrdersDTO = new ArrayList<>();
-
-       for(CustomersProductOrders p:customersProductOrders){
-           CustomersProductOrderDTO customersProductOrderDTO = new CustomersProductOrderDTO();
-//           p.setTheOrders(null);
-//           p.setCustomers(null);
-           p.getCustomers().setCard(null);
-           p.getCustomers().setWishList(null);
-           p.getCustomers().setCustomersProductOrders(null);
-           p.getCustomers().setProductsReviews(null);
-
-           BeanUtils.copyProperties(p, customersProductOrderDTO);
-
-           allCustomersProductOrdersDTO.add(customersProductOrderDTO);
-       }
-
-        return allCustomersProductOrdersDTO;
+//        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllUnApprovedOrders();
+//        List<CustomersProductOrderDTO> allCustomersProductOrdersDTO = new ArrayList<>();
+//
+//       for(CustomersProductOrders p:customersProductOrders){
+//           CustomersProductOrderDTO customersProductOrderDTO = new CustomersProductOrderDTO();
+////           p.setTheOrders(null);
+////           p.setCustomers(null);
+//           p.getCustomers().setCard(null);
+//           p.getCustomers().setWishList(null);
+//           p.getCustomers().setCustomersProductOrders(null);
+//           p.getCustomers().setProductsReviews(null);
+//
+//           BeanUtils.copyProperties(p, customersProductOrderDTO);
+//
+//           allCustomersProductOrdersDTO.add(customersProductOrderDTO);
+//       }
+//
+//        return allCustomersProductOrdersDTO;
+        return ordersService.getAllUnApprovedOrders();
     }
 
    @GetMapping("orders/approved")
