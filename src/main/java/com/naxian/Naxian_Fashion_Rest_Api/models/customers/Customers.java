@@ -26,8 +26,7 @@ public class Customers extends BaseModel {
     @OneToMany(mappedBy = "customers")
     private List<WishList> wishList;
 
-    @OneToMany(mappedBy = "customers")
-    private List<CustomersProductOrders> customersProductOrders;
+//    customer product Order
 
     @OneToMany(mappedBy = "customers")
     private List<ProductsReviews> productsReviews;
