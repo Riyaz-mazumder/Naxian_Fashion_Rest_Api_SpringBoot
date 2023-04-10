@@ -17,8 +17,8 @@ public class Store extends BaseModel {
     private String password;
     private String isApproved;
 
-    @OneToMany(mappedBy = "store")
-    private List<Products> products;
+//    @OneToMany(mappedBy = "store")
+//    private List<Products> products;
 
 
 }

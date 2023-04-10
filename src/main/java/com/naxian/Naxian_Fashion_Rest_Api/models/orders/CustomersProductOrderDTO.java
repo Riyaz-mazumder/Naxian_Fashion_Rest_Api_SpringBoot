@@ -16,7 +16,7 @@ public class CustomersProductOrderDTO extends BaseModelDTO {
     private String address;
     private int amount;
     private List<TheOrders> theOrders;
-    private Customers customers;
+    private Integer customerId;
     private String paymentMethod;
     private String bikashNo;
     private String TrxID;

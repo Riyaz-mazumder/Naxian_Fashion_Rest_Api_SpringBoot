@@ -51,6 +51,14 @@ public class OrdersController {
        return customersProductOrdersDTO ;
    }
 
+    @GetMapping("orders")
+    public List<CustomersProductOrderDTO> getAllOrders_(){
+        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllOrders();
+        List<CustomersProductOrderDTO> customersProductOrdersDTO = new ArrayList<>();
+        BeanUtils.copyProperties(customersProductOrders, customersProductOrdersDTO);
+        return customersProductOrdersDTO ;
+    }
+
    @GetMapping("orders/{id}")
     public CustomersProductOrderDTO getById_(@PathVariable Long id){
 
@@ -78,6 +86,12 @@ public class OrdersController {
 
         ordersService.setOrder(customersProductOrders);
     }
+
+    @PutMapping("orders/makeApprove/{id}")
+    public int makeApprove(@PathVariable Long id){
+      return ordersService.setApproved_(id);
+    }
+
     @DeleteMapping("orders/delete/{id}")
     public void deleteTheOrder(@PathVariable Long id){
        ordersService.deleteOrder(id);

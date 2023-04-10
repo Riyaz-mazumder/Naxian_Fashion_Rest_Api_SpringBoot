@@ -19,4 +19,5 @@ public class ProductsDTO extends BaseModelDTO {
     private String productImage_1;
     private String productImage_2;
     private String productImage_3;
+    private String storeName;
 }

@@ -16,6 +16,10 @@ public class OrdersService {
         return ordersRepo.findAllApprovedOrdersList();
     }
 
+    public List<CustomersProductOrders> getAllOrders(){
+        return ordersRepo.findAll();
+    }
+
     public List<CustomersProductOrders> getAllUnApprovedOrders(){
         return ordersRepo.findAllUnApprovedOrdersList();
     }
@@ -29,5 +33,9 @@ public class OrdersService {
 
     public void  deleteOrder(Long id){
         ordersRepo.deleteById(id);
+    }
+
+    public int setApproved_(Long id){
+       return ordersRepo.setApproved(id);
     }
 }

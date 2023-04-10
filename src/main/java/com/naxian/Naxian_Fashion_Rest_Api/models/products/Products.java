@@ -31,8 +31,10 @@ public class Products extends BaseModel {
     private String productImage_2;
     private String productImage_3;
 
-    @ManyToOne
-    private Store store;
+//    @ManyToOne
+//    private Store store;
+
+    private String storeName;
 
     @OneToMany(mappedBy = "products")
     private List<ProductsReviews> productsReviews;
