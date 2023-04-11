@@ -3,7 +3,9 @@ package com.naxian.Naxian_Fashion_Rest_Api.models.customers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.baseModels.BaseModel;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrders;
 import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsReviews;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
@@ -20,15 +22,21 @@ public class Customers extends BaseModel {
     private LocalDate dob;
     private String password;
 
-    @OneToMany(mappedBy = "customers")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
+
     private List<Card> card;
 
-    @OneToMany(mappedBy = "customers")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wish_list_id", referencedColumnName = "id")
+
     private List<WishList> wishList;
 
 //    customer product Order
 
-    @OneToMany(mappedBy = "customers")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "products_reviews_id", referencedColumnName = "id")
+
     private List<ProductsReviews> productsReviews;
 
 }

@@ -3,8 +3,10 @@ package com.naxian.Naxian_Fashion_Rest_Api.models.products;
 import com.naxian.Naxian_Fashion_Rest_Api.models.baseModels.BaseModel;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.ToString;
 
 
 @Entity
@@ -13,6 +15,8 @@ public class ProductsReviews extends BaseModel {
  private String Star;
 
  @ManyToOne
+ @ToString.Exclude
+ @JoinColumn(name="products_reviews_id")
  private Customers customers;
 
  @ManyToOne
