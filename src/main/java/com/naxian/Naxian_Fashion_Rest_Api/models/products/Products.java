@@ -36,9 +36,9 @@ public class Products extends BaseModel {
 
     private String storeName;
 
-    @OneToMany(mappedBy = "products")
-    private List<ProductsReviews> productsReviews;
-
-    @OneToMany(mappedBy = "products")
-    private List<QAndA_AboutTheProduct> qAndA_aboutTheProduct;
+//    @OneToMany(mappedBy = "products")
+//    private List<ProductsReviews> productsReviews;
+//
+//    @OneToMany(mappedBy = "products")
+//    private List<QAndA_AboutTheProduct> qAndA_aboutTheProduct;
 }

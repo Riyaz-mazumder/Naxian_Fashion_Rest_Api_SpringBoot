@@ -12,7 +12,7 @@ public class QAndA_AboutTheProduct extends BaseModel {
     private String question;
     private String answer;
 
-    @ManyToOne
-    private Products products;
+//    @ManyToOne
+//    private Products products;
 
 }

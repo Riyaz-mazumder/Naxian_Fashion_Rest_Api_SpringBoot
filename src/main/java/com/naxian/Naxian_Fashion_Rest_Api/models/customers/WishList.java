@@ -10,8 +10,11 @@ import lombok.ToString;
 @Data
 @Entity
 public class WishList extends ProductsBaseModel {
-    @ManyToOne
-    @ToString.Exclude
-    @JoinColumn(name="wish_list_id")
-    private Customers customers;
+//    @ManyToOne
+//    @ToString.Exclude
+//    @JoinColumn(name="wish_list_id")
+//    private Customers customers;
+
+    private Integer CustomerId;
+
 }

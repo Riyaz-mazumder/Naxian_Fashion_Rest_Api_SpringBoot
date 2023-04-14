@@ -14,13 +14,13 @@ import lombok.ToString;
 public class ProductsReviews extends BaseModel {
  private String Star;
 
- @ManyToOne
- @ToString.Exclude
- @JoinColumn(name="products_reviews_id")
- private Customers customers;
-
- @ManyToOne
- private Products products;
+// @ManyToOne
+// @ToString.Exclude
+// @JoinColumn(name="products_reviews_id")
+// private Customers customers;
+//
+// @ManyToOne
+// private Products products;
 
  private String imageUrl1;
  private String imageUrl2;
