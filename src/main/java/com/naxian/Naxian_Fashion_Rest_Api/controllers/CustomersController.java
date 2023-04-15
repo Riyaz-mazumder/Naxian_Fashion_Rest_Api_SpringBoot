@@ -33,6 +33,7 @@ public class CustomersController {
         List<CustomersDTO> customersDTO = new ArrayList<>();
 
         for (Customers customers1:customers){
+
             CustomersDTO customersDTO1 = new CustomersDTO();
             BeanUtils.copyProperties(customers1, customersDTO1);
             customersDTO.add(customersDTO1);
@@ -84,17 +85,17 @@ public class CustomersController {
 
 
 
-    @PutMapping("customers/{id}")
-    public void addCard_(@RequestBody CustomersDTO customersDTO, @PathVariable(value = "id") Long id){
-
-        Customers customers = customersService.getCustomer(id);
-//        BeanUtils.copyProperties(customersDTO, customers);
-        for (Card c:customersDTO.getCard()
-             ) {
-            c.setCustomers(customers);
-            cardRepo.save(c);
-        }
-
-    }
+//    @PutMapping("customers/{id}")
+//    public void addCard_(@RequestBody CustomersDTO customersDTO, @PathVariable(value = "id") Long id){
+//
+//        Customers customers = customersService.getCustomer(id);
+////        BeanUtils.copyProperties(customersDTO, customers);
+//        for (Card c:customersDTO.getCard()
+//             ) {
+//            c.setCustomers(customers);
+//            cardRepo.save(c);
+//        }
+//
+//    }
 
 }
