@@ -15,6 +15,6 @@ public class WishList extends ProductsBaseModel {
 //    @JoinColumn(name="wish_list_id")
 //    private Customers customers;
 
-    private Integer CustomerId;
+    private Integer customerId;
 
 }

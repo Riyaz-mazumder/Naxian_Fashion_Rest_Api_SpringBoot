@@ -1,11 +1,8 @@
 package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 
-import com.naxian.Naxian_Fashion_Rest_Api.dataRepoes.CardRepo;
-import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Card;
+import com.naxian.Naxian_Fashion_Rest_Api.dataRepoes.Customers.CardRepo;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.Customers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.customers.CustomersDTO;
-import com.naxian.Naxian_Fashion_Rest_Api.models.products.Products;
-import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.CustomersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

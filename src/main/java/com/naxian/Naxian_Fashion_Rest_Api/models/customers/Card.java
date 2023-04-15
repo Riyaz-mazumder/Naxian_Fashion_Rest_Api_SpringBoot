@@ -15,5 +15,5 @@ public class Card extends ProductsBaseModel{
 //    @JoinColumn(name="card_id")
 //    private Customers customers;
 
-    private Integer CustomerId;
+    private Integer customerId;
 }

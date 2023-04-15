@@ -23,4 +23,8 @@ public class CartService {
     public void deleteCart(Long id){
         cardRepo.deleteById(id);
     }
+
+    public void updateCartQuantity(Card card){
+        cardRepo.save(card);
+    }
 }

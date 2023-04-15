@@ -18,4 +18,8 @@ public class WishListService {
     public void addToWishList(WishList wishList){
         wishListRepo.save(wishList);
     }
+
+    public void delete(Long id){
+        wishListRepo.deleteById(id);
+    }
 }

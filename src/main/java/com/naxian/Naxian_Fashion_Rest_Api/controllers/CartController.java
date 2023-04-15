@@ -23,8 +23,13 @@ public class CartController {
         cartService.addToCart(card);
     }
 
-    @DeleteMapping("cart/{id]")
+    @DeleteMapping("cart/{id}")
     public void deleteCart(@PathVariable Long id){
         cartService.deleteCart(id);
+    }
+
+    @PutMapping("cart")
+    public void updateCart(@RequestBody Card card){
+        cartService.updateCartQuantity(card);
     }
 }
