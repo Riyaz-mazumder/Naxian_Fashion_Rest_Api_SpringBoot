@@ -16,6 +16,10 @@ public class CartService {
         return cardRepo.findAll();
     }
 
+    public Card getById(Long id){
+        return cardRepo.getById(id);
+    }
+
     public void addToCart(Card card){
         cardRepo.save(card);
     }

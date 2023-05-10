@@ -35,6 +35,7 @@ public class Products extends BaseModel {
 //    private Store store;
 
     private String storeName;
+    private String couponCode;
 
 //    @OneToMany(mappedBy = "products")
 //    private List<ProductsReviews> productsReviews;

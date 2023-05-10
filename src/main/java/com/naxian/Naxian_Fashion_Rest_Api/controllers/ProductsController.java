@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.beans.BeanUtils.copyProperties;
+
 @RestController
 @RequestMapping("/api/v1")
 public class ProductsController {
@@ -26,7 +28,7 @@ public class ProductsController {
 
         for (Products products:allProducts){
             ProductsDTO productsDTO = new ProductsDTO();
-            BeanUtils.copyProperties(products, productsDTO);
+            copyProperties(products, productsDTO);
             allProductsDto.add(productsDTO);
         }
         return allProductsDto;
@@ -38,21 +40,21 @@ public class ProductsController {
         Products products = productsService.GetOneProduct(id);
         ProductsDTO productsDTO = new ProductsDTO();
 
-        BeanUtils.copyProperties(products, productsDTO);
+        copyProperties(products, productsDTO);
         return productsDTO;
     }
 
     @PostMapping("/products")
     public void saveProduct(@RequestBody ProductsDTO productsDTO){
         Products products = new Products();
-        BeanUtils.copyProperties(productsDTO, products);
+        copyProperties(productsDTO, products);
         productsService.SaveProduct(products);
     }
 
     @PutMapping("/products")
     public void editProduct(@RequestBody ProductsDTO productsDTO){
         Products products = new Products();
-        BeanUtils.copyProperties(productsDTO, products);
+        copyProperties(productsDTO, products);
         productsService.SaveProduct(products);
     }
 

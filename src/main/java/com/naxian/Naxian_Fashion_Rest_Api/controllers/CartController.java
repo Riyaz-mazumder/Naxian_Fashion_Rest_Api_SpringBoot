@@ -18,6 +18,11 @@ public class CartController {
         return cartService.getAllCart();
     }
 
+    @GetMapping("cart/{id}")
+    public void getById(@PathVariable Long id){
+        cartService.getById(id);
+    }
+
     @PostMapping("cart")
     public void sateToCart(@RequestBody Card card){
         cartService.addToCart(card);
