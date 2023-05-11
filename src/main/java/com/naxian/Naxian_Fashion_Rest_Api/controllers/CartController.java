@@ -19,8 +19,8 @@ public class CartController {
     }
 
     @GetMapping("cart/{id}")
-    public void getById(@PathVariable Long id){
-        cartService.getById(id);
+    public Card getById(@PathVariable Long id){
+      return cartService.getById(id);
     }
 
     @PostMapping("cart")
