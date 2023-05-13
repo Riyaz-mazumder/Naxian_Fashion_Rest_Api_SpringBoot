@@ -17,7 +17,7 @@ public class CartService {
     }
 
     public Card getById(Long id){
-        return cardRepo.getById(id);
+        return cardRepo.findById(id).get();
     }
 
     public void addToCart(Card card){
