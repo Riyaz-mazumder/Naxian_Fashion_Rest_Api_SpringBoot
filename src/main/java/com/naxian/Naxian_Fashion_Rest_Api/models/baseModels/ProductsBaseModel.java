@@ -22,6 +22,7 @@ public class ProductsBaseModel extends BaseModel{
     private String productSize;
     private String productColor;
     private String weight;
+    private String couponCode;
     private String productImage_1;
     private String productImage_2;
     private String productImage_3;

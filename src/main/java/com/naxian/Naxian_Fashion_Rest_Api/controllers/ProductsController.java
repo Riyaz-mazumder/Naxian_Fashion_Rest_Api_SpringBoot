@@ -63,4 +63,9 @@ public class ProductsController {
         productsService.deleteTheProduct(id);
     }
 
+    @GetMapping("/product/{subCategory}")
+    public List<Products> searchedProduct(@PathVariable String subCategory){
+      return  productsService.getAllProductsBySearch(subCategory);
+    }
+
 }

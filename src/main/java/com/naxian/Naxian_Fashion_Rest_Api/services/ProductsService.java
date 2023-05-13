@@ -27,4 +27,9 @@ public class ProductsService {
     public void deleteTheProduct(Long id){
         productsRepo.deleteById(id);
     }
+
+    public List<Products> getAllProductsBySearch(String subCategory){
+        return productsRepo.searchdProductsBySubCategory(subCategory);
+    }
+
 }
