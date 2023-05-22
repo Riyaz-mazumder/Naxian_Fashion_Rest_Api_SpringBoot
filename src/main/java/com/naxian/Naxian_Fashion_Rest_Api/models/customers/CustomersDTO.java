@@ -13,6 +13,7 @@ public class CustomersDTO extends BaseModelDTO {
     private String email;
     private String gender;
     private LocalDate dob;
+    private String password;
 //    private List<Card> card;
 //    private List<WishList> wishList;
 //    private List<ProductsReviews> productsReviews;

@@ -6,8 +6,9 @@ import java.time.LocalDate;
 
 @Data
 public class AdminsDTO {
+    private Long id;
     private String name;
     private String email;
-    private String gender;
-    private LocalDate dob;
+    private String password;
+    private String adminPriority;
 }
