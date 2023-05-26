@@ -3,6 +3,8 @@ package com.naxian.Naxian_Fashion_Rest_Api.services;
 import com.naxian.Naxian_Fashion_Rest_Api.dataRepoes.ProductsRepo;
 import com.naxian.Naxian_Fashion_Rest_Api.models.products.Products;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,11 @@ public class ProductsService {
 
     public List<Products> GetAllProducts(){
         return productsRepo.findAll();
+    }
+
+
+    public Page<Products> findAll(Pageable pageable) {
+        return productsRepo.findAll(pageable);
     }
 
     public void SaveProduct(Products products){
