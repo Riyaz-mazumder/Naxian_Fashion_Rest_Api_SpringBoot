@@ -26,9 +26,11 @@ public class ProductsController {
     private ProductsService productsService;
 
     @GetMapping("/products")
-    public Page<Products> getAllProduct(@PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable page){
+    public Page<Products> getAllProduct(@PageableDefault(size = 5) Pageable page){
 
         return  productsService.findAll(page);
+    }
+
 
 //        List<Products> allProducts = productsService.findAll();
 //        List<ProductsDTO> allProductsDto = new ArrayList<>();
@@ -41,7 +43,6 @@ public class ProductsController {
 ////        return allProductsDto;
 //
 //        return new PageImpl<>(allProductsDto, page, allProducts.getTotalElements());
-    }
 
     @GetMapping("/products/{id}")
     public ProductsDTO getById(@PathVariable Long id){
