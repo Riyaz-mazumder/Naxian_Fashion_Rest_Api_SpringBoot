@@ -26,7 +26,7 @@ public class ProductsController {
     private ProductsService productsService;
 
     @GetMapping("/products")
-    public Page<Products> getAllProduct(@PageableDefault(size = 5) Pageable page){
+    public Page<Products> getAllProduct(@PageableDefault(direction = Sort.Direction.DESC, size = 5) Pageable page){
 
         return  productsService.findAll(page);
     }
