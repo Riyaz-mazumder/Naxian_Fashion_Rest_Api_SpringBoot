@@ -25,10 +25,12 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
 
-    @GetMapping("/products")
-    public Page<Products> getAllProduct(@PageableDefault(direction = Sort.Direction.DESC, size = 5) Pageable page){
+    double totalDataCount = productsService.countRecord();
 
-        return  productsService.findAll(page);
+    @GetMapping("/products")
+    public Page<Products> getAllProduct(@PageableDefault( size = 5, page = 2,  sort = {"id"}, direction = Sort.Direction.DESC) Pageable page){
+
+        return productsService.findAll(page);
     }
 
 

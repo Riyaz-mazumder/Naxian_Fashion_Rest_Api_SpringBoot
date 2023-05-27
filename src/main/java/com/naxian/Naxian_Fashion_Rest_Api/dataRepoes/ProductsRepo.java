@@ -22,4 +22,6 @@ public interface ProductsRepo extends JpaRepository<Products, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM naxian_fashion.products where sub_cate = ?")
     public List<Products> searchdProductsBySubCategory(String subCategory);
 
+
+
 }

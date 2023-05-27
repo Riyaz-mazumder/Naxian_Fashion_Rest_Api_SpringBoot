@@ -39,4 +39,10 @@ public class ProductsService {
         return productsRepo.searchdProductsBySubCategory(subCategory);
     }
 
+    public double countRecord(){
+        double number = productsRepo.count() ;
+        double totalNum = number / 5;
+        return Math.ceil(totalNum) - 1;
+    }
+
 }
