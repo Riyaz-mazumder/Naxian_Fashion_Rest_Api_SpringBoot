@@ -3,6 +3,7 @@ package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.EmailRequest;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrders;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrderDTO;
+import com.naxian.Naxian_Fashion_Rest_Api.services.EmailService;
 import com.naxian.Naxian_Fashion_Rest_Api.services.OrdersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,8 @@ public class OrdersController {
    @Autowired
     private OrdersService ordersService;
 
-
    @Autowired
-    private final JavaMailSender emailSender;
-
-    public OrdersController(OrdersService ordersService, JavaMailSender emailSender) {
-        this.ordersService = ordersService;
-        this.emailSender = emailSender;
-    }
+  private EmailService emailService;
 
 
     @GetMapping("orders/unApproved")
@@ -88,16 +83,18 @@ public class OrdersController {
 
         ordersService.setOrder(customersProductOrders);
 
+        emailService.sendEmail(customersProductOrders.getEmail(), "Naxian Fashion purchase", "thanks " + customersProductOrders.getFirstName() +"For Placing an order. We will get back to you soon. -Naxian Fashion Team");
+
     }
 
-    @PostMapping("send-email")
-    public void sendEmail(@RequestBody EmailRequest emailRequest) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(emailRequest.getEmail());
-        message.setSubject(emailRequest.getSubject());
-        message.setText(emailRequest.getBody());
-        emailSender.send(message);
-    }
+//    @PostMapping("send-email")
+//    public void sendEmail(@RequestBody EmailRequest emailRequest) {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setTo(emailRequest.getEmail());
+//        message.setSubject(emailRequest.getSubject());
+//        message.setText(emailRequest.getBody());
+//        emailSender.send(message);
+//    }
 
     @PutMapping("orders")
     public void editOrder_(@RequestBody CustomersProductOrderDTO customersProductOrderDTO){
