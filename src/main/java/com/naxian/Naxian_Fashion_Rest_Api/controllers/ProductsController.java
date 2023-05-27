@@ -24,10 +24,10 @@ public class ProductsController {
 
     @GetMapping("/products")
     public Page<Products> getAllProduct(@PageableDefault(direction = Sort.Direction.DESC, size = 5) Pageable page) {
-        Sort sort = page.getSort().descending();
-        page = PageRequest.of(Integer.MAX_VALUE, page.getPageSize(), sort);
+        page = PageRequest.of(Integer.MAX_VALUE, page.getPageSize(), page.getSort());
         return productsService.findAll(page);
     }
+
 
 
 
