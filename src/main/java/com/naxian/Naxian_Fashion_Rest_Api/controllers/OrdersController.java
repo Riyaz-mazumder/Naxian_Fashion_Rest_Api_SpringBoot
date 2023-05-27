@@ -3,8 +3,6 @@ package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 import com.naxian.Naxian_Fashion_Rest_Api.models.EmailRequest;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrders;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrderDTO;
-import com.naxian.Naxian_Fashion_Rest_Api.models.products.Products;
-import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.OrdersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +21,14 @@ public class OrdersController {
     private OrdersService ordersService;
 
 
+   @Autowired
     private final JavaMailSender emailSender;
 
-    @Autowired
-    public OrdersController(JavaMailSender emailSender) {
+    public OrdersController(OrdersService ordersService, JavaMailSender emailSender) {
+        this.ordersService = ordersService;
         this.emailSender = emailSender;
     }
+
 
     @GetMapping("orders/unApproved")
     public List<CustomersProductOrders> getAllUnApprovedOrders_(){
