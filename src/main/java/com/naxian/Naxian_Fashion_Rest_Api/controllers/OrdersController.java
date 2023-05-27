@@ -1,5 +1,6 @@
 package com.naxian.Naxian_Fashion_Rest_Api.controllers;
 
+import com.naxian.Naxian_Fashion_Rest_Api.models.EmailRequest;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrders;
 import com.naxian.Naxian_Fashion_Rest_Api.models.orders.CustomersProductOrderDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.models.products.Products;
@@ -7,6 +8,8 @@ import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.OrdersService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,6 +21,14 @@ public class OrdersController {
 
    @Autowired
     private OrdersService ordersService;
+
+
+    private final JavaMailSender emailSender;
+
+    @Autowired
+    public OrdersController(JavaMailSender emailSender) {
+        this.emailSender = emailSender;
+    }
 
     @GetMapping("orders/unApproved")
     public List<CustomersProductOrders> getAllUnApprovedOrders_(){
@@ -76,6 +87,16 @@ public class OrdersController {
         BeanUtils.copyProperties(customersProductOrderDTO, customersProductOrders);
 
         ordersService.setOrder(customersProductOrders);
+
+    }
+
+    @PostMapping("send-email")
+    public void sendEmail(@RequestBody EmailRequest emailRequest) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(emailRequest.getEmail());
+        message.setSubject(emailRequest.getSubject());
+        message.setText(emailRequest.getBody());
+        emailSender.send(message);
     }
 
     @PutMapping("orders")
