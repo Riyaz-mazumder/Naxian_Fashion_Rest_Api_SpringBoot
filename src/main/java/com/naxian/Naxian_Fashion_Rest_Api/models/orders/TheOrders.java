@@ -15,6 +15,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TheOrders extends ProductsBaseModel{
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private CustomersProductOrders customersProductOrders;
 }

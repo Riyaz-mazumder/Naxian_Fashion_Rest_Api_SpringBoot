@@ -83,7 +83,7 @@ public class OrdersController {
 
         ordersService.setOrder(customersProductOrders);
 
-        emailService.sendEmail(customersProductOrders.getEmail(), "Naxian Fashion purchase", "thanks " + customersProductOrders.getFirstName() +"For Placing an order. We will get back to you soon. -Naxian Fashion Team");
+        emailService.sendEmail(customersProductOrders.getEmail(), "Naxian Fashion purchase", "Thank You " + customersProductOrders.getFirstName() + customersProductOrders.getLastName() +" Sir, For Placing an order. We will get back to you soon. -Naxian Fashion Team");
 
     }
 
