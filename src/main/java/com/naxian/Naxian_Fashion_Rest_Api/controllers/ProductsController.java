@@ -6,10 +6,7 @@ import com.naxian.Naxian_Fashion_Rest_Api.models.products.ProductsDTO;
 import com.naxian.Naxian_Fashion_Rest_Api.services.ProductsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +23,14 @@ public class ProductsController {
     private ProductsService productsService;
 
     @GetMapping("/products")
-    public Page<Products> getAllProduct(@PageableDefault(direction = Sort.Direction.DESC, size = 5) Pageable page){
-
-        return  productsService.findAll(page);
+    public Page<Products> getAllProduct(@PageableDefault(direction = Sort.Direction.DESC, size = 5) Pageable page) {
+        Sort sort = page.getSort().descending();
+        page = PageRequest.of(Integer.MAX_VALUE, page.getPageSize(), sort);
+        return productsService.findAll(page);
     }
+
+
+
 
 
 //        List<Products> allProducts = productsService.findAll();
