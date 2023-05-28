@@ -71,14 +71,10 @@ public class OrdersController {
 
     }
 
-//    @PostMapping("send-email")
-//    public void sendEmail(@RequestBody EmailRequest emailRequest) {
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setTo(emailRequest.getEmail());
-//        message.setSubject(emailRequest.getSubject());
-//        message.setText(emailRequest.getBody());
-//        emailSender.send(message);
-//    }
+    @PostMapping("sendEmail")
+    public void sendEmail(@RequestBody EmailRequest emailRequest) {
+        emailService.sendEmail(emailRequest.getTo(),emailRequest.getSubject(), emailRequest.getBody() );
+    }
 
     @PutMapping("orders")
     public void editOrder_(@RequestBody CustomersProductOrderDTO customersProductOrderDTO){
