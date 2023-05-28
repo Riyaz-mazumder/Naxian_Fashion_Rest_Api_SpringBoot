@@ -21,7 +21,7 @@ public interface OrdersRepo extends JpaRepository<CustomersProductOrders, Long> 
 
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "UPDATE naxian_fashion.customers_product_orders SET is_approved = true WHERE id = :orderId AND is_approved = false")
+    @Query(nativeQuery = true, value = "UPDATE naxian_fashion.customers_product_orders SET is_approved = true WHERE id =? :orderId AND is_approved = false")
     public int setApproved(@Param("orderId") Long orderId);
 
 

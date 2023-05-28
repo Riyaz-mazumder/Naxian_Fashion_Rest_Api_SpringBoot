@@ -27,25 +27,6 @@ public class OrdersController {
 
     @GetMapping("orders/unApproved")
     public List<CustomersProductOrders> getAllUnApprovedOrders_(){
-
-//        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllUnApprovedOrders();
-//        List<CustomersProductOrderDTO> allCustomersProductOrdersDTO = new ArrayList<>();
-//
-//       for(CustomersProductOrders p:customersProductOrders){
-//           CustomersProductOrderDTO customersProductOrderDTO = new CustomersProductOrderDTO();
-////           p.setTheOrders(null);
-////           p.setCustomers(null);
-//           p.getCustomers().setCard(null);
-//           p.getCustomers().setWishList(null);
-//           p.getCustomers().setCustomersProductOrders(null);
-//           p.getCustomers().setProductsReviews(null);
-//
-//           BeanUtils.copyProperties(p, customersProductOrderDTO);
-//
-//           allCustomersProductOrdersDTO.add(customersProductOrderDTO);
-//       }
-//
-//        return allCustomersProductOrdersDTO;
         return ordersService.getAllUnApprovedOrders();
     }
 
@@ -58,12 +39,15 @@ public class OrdersController {
    }
 
     @GetMapping("orders")
-    public List<CustomersProductOrderDTO> getAllOrders_(){
-        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllOrders();
-        List<CustomersProductOrderDTO> customersProductOrdersDTO = new ArrayList<>();
-        BeanUtils.copyProperties(customersProductOrders, customersProductOrdersDTO);
-        return customersProductOrdersDTO ;
+    public List<CustomersProductOrders> getAllOrders_(){
+
+        return ordersService.getAllOrders();
     }
+
+//        List<CustomersProductOrders> customersProductOrders =  ordersService.getAllOrders();
+//        List<CustomersProductOrderDTO> customersProductOrdersDTO = new ArrayList<>();
+//        BeanUtils.copyProperties(customersProductOrders, customersProductOrdersDTO);
+//        return customersProductOrdersDTO ;
 
    @GetMapping("orders/{id}")
     public CustomersProductOrderDTO getById_(@PathVariable Long id){
@@ -83,7 +67,7 @@ public class OrdersController {
 
         ordersService.setOrder(customersProductOrders);
 
-        emailService.sendEmail(customersProductOrders.getEmail(), "Naxian Fashion purchase", "Thank You " + customersProductOrders.getFirstName() + customersProductOrders.getLastName() +" Sir, For Placing an order. We will get back to you soon. -Naxian Fashion Team");
+        emailService.sendEmail(customersProductOrders.getEmail(), "Naxian Fashion purchase", " Thank You " + customersProductOrders.getFirstName() + customersProductOrders.getLastName() +" Sir, For Placing an order. We will get back to you soon. -Naxian Fashion Team");
 
     }
 
