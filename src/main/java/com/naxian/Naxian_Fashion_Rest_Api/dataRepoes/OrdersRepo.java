@@ -13,15 +13,15 @@ import java.util.List;
 @Repository
 public interface OrdersRepo extends JpaRepository<CustomersProductOrders, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM naxian_fashion.customers_product_orders WHERE is_approved = false;")
+    @Query(nativeQuery = true, value = "SELECT * FROM customers_product_orders WHERE approved= false;")
     public List<CustomersProductOrders> findAllUnApprovedOrdersList();
 
-    @Query(nativeQuery = true, value = "SELECT * FROM customers_product_orders WHERE is_approved = true")
+    @Query(nativeQuery = true, value = "SELECT * FROM customers_product_orders WHERE approved = true")
     public List<CustomersProductOrders> findAllApprovedOrdersList();
 
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "UPDATE naxian_fashion.customers_product_orders SET is_approved = true WHERE id =? :orderId AND is_approved = false")
+    @Query(nativeQuery = true, value = "UPDATE customers_product_orders SET is_approved = true WHERE id =? :orderId AND is_approved = false")
     public int setApproved(@Param("orderId") Long orderId);
 
 
