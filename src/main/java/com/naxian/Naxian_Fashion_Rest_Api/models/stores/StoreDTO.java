@@ -13,5 +13,4 @@ public class StoreDTO extends BaseModelDTO {
     private String email;
     private String phoneNum;
     private String password;
-    private List<Products> products;
 }

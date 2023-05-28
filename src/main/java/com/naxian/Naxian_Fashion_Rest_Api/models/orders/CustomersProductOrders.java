@@ -21,9 +21,12 @@ public class CustomersProductOrders extends BaseModel {
     private String phone;
     private String address;
     private int amount;
+//
+//    @OneToMany(mappedBy = "customersProductOrders", cascade = CascadeType.ALL)
+//    private List<TheOrders> theOrders;
 
-    @OneToMany(mappedBy = "customersProductOrders", cascade = CascadeType.ALL)
-    private List<TheOrders> theOrders;
+    @Column(length = 500)
+    private String products;
 
 //    getting null
     private Integer customerId;
