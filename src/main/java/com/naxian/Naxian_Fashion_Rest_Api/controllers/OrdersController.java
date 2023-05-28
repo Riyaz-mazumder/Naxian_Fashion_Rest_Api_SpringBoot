@@ -25,7 +25,7 @@ public class OrdersController {
   private EmailService emailService;
 
 
-    @GetMapping("orders/unApproved")
+    @GetMapping("orders/unapproved")
     public List<CustomersProductOrders> getAllUnApprovedOrders_(){
         return ordersService.getAllUnApprovedOrders();
     }

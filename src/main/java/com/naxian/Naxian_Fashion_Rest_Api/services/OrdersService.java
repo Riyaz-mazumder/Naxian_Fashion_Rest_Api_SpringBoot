@@ -22,7 +22,7 @@ public class OrdersService {
     }
 
     public List<CustomersProductOrders> getAllUnApprovedOrders(){
-        return ordersRepo.findAllUnApprovedOrdersList();
+        return ordersRepo.findByIsApprovedFalse();
     }
 
     public CustomersProductOrders getOrder(Long id){
