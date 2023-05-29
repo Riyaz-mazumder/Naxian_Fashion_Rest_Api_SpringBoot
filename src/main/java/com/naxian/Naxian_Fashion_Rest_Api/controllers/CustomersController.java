@@ -18,9 +18,9 @@ public class CustomersController {
     @Autowired
     private CustomersService customersService;
 
-
-    @Autowired
-    CardRepo cardRepo;
+//
+//    @Autowired
+//    CardRepo cardRepo;
 
 
     @GetMapping("customers")

@@ -19,9 +19,12 @@ public interface ProductsRepo extends JpaRepository<Products, Long> {
     @Query(nativeQuery = true, value = "INSERT INTO Products (qAndA_aboutTheProduct) VALUES(:qAndA_aboutTheProductValue)")
     public void setProductsQAndA_AboutTheProduct(@Param("qAndA_aboutTheProductValue") List<QAndA_AboutTheProduct> qAndA_aboutTheProductValue);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM railway.products where sub_cate = ?")
+    @Query(nativeQuery = true, value = "SELECT * FROM railway.products WHERE sub_cate = ?")
     public List<Products> searchdProductsBySubCategory(String subCategory);
 
+
+    @Query(nativeQuery = true, value = "SELECT * FROM railway.products WHERE sub_cate = ?")
+    public List<Products> searchProductsBySubCategory(String subCategory);
 
 
 }
