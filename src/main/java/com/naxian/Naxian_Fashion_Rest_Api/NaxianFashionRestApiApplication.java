@@ -20,7 +20,7 @@ public class NaxianFashionRestApiApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedMethods("*")
-						.allowedOrigins("https://juicy-camera-production.up.railway.app");
+						.allowedOrigins("https://naxianfashion-7b928.web.app");
 			}
 		};
 	}
