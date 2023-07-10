@@ -2,6 +2,7 @@ package com.naxian.Naxian_Fashion_Rest_Api.models.admins;
 
 import com.naxian.Naxian_Fashion_Rest_Api.models.baseModels.BaseModel;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 public class Admins {
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String email;
